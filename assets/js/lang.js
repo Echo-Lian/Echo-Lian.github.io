@@ -39,6 +39,7 @@
       'footer-email': 'Email',
       'footer-social': 'Social',
       'footer-copyright': 'Untitled',
+      'nav-menu': 'Menu',
       'lang-label': 'EN'
     },
 
@@ -73,6 +74,7 @@
       'footer-email': '邮箱',
       'footer-social': '社交媒体',
       'footer-copyright': '无标题',
+      'nav-menu': '菜单',
       'lang-label': '中文'
     },
 
@@ -107,6 +109,7 @@
       'footer-email': 'メール',
       'footer-social': 'ソーシャル',
       'footer-copyright': '無題',
+      'nav-menu': 'メニュー',
       'lang-label': '日本語'
     }
   };
@@ -253,6 +256,10 @@
   // ============================================================
 
   $(function() {
+
+    // Attach data-i18n to dynamically created nav panel toggle
+    var navToggle = document.getElementById('navPanelToggle');
+    if (navToggle) navToggle.setAttribute('data-i18n', 'nav-menu');
 
     // Set initial language
     switchLang(currentLang);
