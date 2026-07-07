@@ -23,21 +23,26 @@
 						Lian</h1>
 						<p>AI developer focused on building practical, trustworthy machine learning systems — from research prototypes to production services.</p>
 						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Explore</a></li>
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-i18n="intro-explore">Explore</a></li>
 						</ul>
 					</div>
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">BAIYI LIAN</a>
+						<a href="index.html" class="logo" data-i18n="header-logo">BAIYI LIAN</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">HOME</a></li>
-							<li><a href="#projects">PROJECTS</a></li>
-							<li><a href="#contacts">CONTACTS</a></li>
+							<li class="active"><a href="index.html" data-i18n="nav-home">HOME</a></li>
+							<li><a href="#projects" data-i18n="nav-projects">PROJECTS</a></li>
+							<li><a href="#contacts" data-i18n="nav-contacts">CONTACTS</a></li>
+						</ul>
+						<ul class="icons lang-switch">
+							<li><a href="#" class="lang-btn active" data-lang="en" data-i18n="lang-en">EN</a></li>
+							<li><a href="#" class="lang-btn" data-lang="zh" data-i18n="lang-zh">中文</a></li>
+							<li><a href="#" class="lang-btn" data-lang="ja" data-i18n="lang-ja">日本語</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://x.com/baiyi_lian" target="_blank" rel="noopener noreferrer" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -53,12 +58,12 @@
 							<article class="post featured">
 								<header class="major">
 									<!-- <span class="date">April 25, 2017</span> -->
-								<h2><a href="#">Hi — I'm Baiyi</a></h2>
-								<p>I build reliable AI systems and love turning research ideas into practical tools. I work across full-stack ML: data, models, and deployment.</p>
+								<h2><a href="#" data-i18n="featured-heading">Hi — I'm Baiyi</a></h2>
+								<p data-i18n="featured-desc">I build reliable AI systems and love turning research ideas into practical tools. I work across full-stack ML: data, models, and deployment.</p>
 								</header>
 								<a href="#" class="image main"><img src="images/me.JPG" alt="" /></a>
 								<ul class="actions special">
-									<li><a href="Baiyi_Lian.pdf" class="button large" download="Baiyi_Lian.pdf">Download Résumé</a></li>
+									<li><a href="#" id="download-resume" class="button large" data-i18n="featured-resume">Download Résumé</a></li>
 								</ul>
 							</article>
 						<!-- Posts -->
@@ -66,102 +71,102 @@
 								<article>
 									<header>
 										<!-- <span class="date">April 24, 2017</span> -->
-										<h2>CareSoul</h2>
+										<h2 data-i18n="project-caresoul">CareSoul</h2>
 									</header>
 									<a class="image fit"><img src="images/mental.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-caresoul-desc">
 										An AI-powered wellbeing assistant focused on natural dialogue which implements an agentic RAG workflow to retrieve clinically-grounded relationship tips while utilizing a 'Safety-First' pre-processing layer to intercept high-risk queries, ensuring all interactions remain within health-tech compliance boundaries.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://github.com/Echo-Lian/CareSoul" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://github.com/Echo-Lian/CareSoul" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
 										<!-- <span class="date">April 22, 2017</span> -->
-										<h2>easy tts reader</h2>
+										<h2 data-i18n="project-easytts">easy tts reader</h2>
 									</header>
 									<a class="image fit"><img src="images/speech.png" alt="" /></a>
 									<p>
-										A cross-platform Electron desktop application that converts PDF documents to speech using three TTS engines — local Kokoro-82M (54 voices, 9 languages), OpenAI TTS, and macOS System TTS. Features automatic language detection, speed control (0.5x-2.0x), audio export, and a batch CLI converter for processing multiple PDFs at once. Fully private — Kokoro runs 100% locally with no API keys or subscriptions required.
+																				<span data-i18n="project-easytts-desc">A cross-platform Electron desktop application that converts PDF documents to speech using three TTS engines — local Kokoro-82M (54 voices, 9 languages), OpenAI TTS, and macOS System TTS. Features automatic language detection, speed control (0.5x-2.0x), audio export, and a batch CLI converter for processing multiple PDFs at once. Fully private — Kokoro runs 100% locally with no API keys or subscriptions required.</span>
 									</p>
 									<ul class="actions special">
-										<li><a href="https://github.com/Echo-Lian/Easy-TTS-Reader" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://github.com/Echo-Lian/Easy-TTS-Reader" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								
 								<article>
 									<header>
 										<!-- <span class="date">April 18, 2017</span> -->
-										<h2>End to end snowflake pipeline with cd/ci</h2>
+										<h2 data-i18n="project-snowflake">End to end snowflake pipeline with cd/ci</h2>
 									</header>
 									<a class="image fit"><img src="images/data2.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-snowflake-desc">
 										This project demonstrates a complete data pipeline that ingests data into Snowflake, manages transformations using dbt (Data Build Tool), and implements automated CI/CD practices.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://github.com/Echo-Lian/E2E-SnowflakePipeline-with-CI-CD" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://github.com/Echo-Lian/E2E-SnowflakePipeline-with-CI-CD" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
 										<!-- <span class="date">April 14, 2017</span> -->
-										<h2>Teams Caption translation extension</h2>
+										<h2 data-i18n="project-teams-caption">Teams Caption translation extension</h2>
 									</header>
 									<a class="image fit"><img src="images/translation.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-teams-caption-desc">
 										A Chrome/Edge browser extension that automatically captures live captions from Microsoft Teams meetings via DOM mutation observers and translates them bidirectionally between Chinese and English in real-time using Google Translate API. Features automatic language detection, a popup interface showing translation history with timestamps, and requires no configuration — just enable Teams live captions and it works.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://github.com/Echo-Lian/TeamsCaptionTrans" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://github.com/Echo-Lian/TeamsCaptionTrans" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2>LILT</h2>
+										<h2 data-i18n="project-lilt">LILT</h2>
 									</header>
 									<a class="image fit"><img src="images/lilt.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-lilt-desc">
 										An AI-powered language learning application available on both web and mobile, serving over 70 Finnish learners. Integrates local LLMs for personalized text generation and TTS-powered AI chat across daily life scenarios. Includes evaluation metrics that analyze speech patterns — pronunciation, intonation, fluency — providing real-time feedback to help learners improve their spoken Finnish.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://lilt.zhou.studio/" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://lilt.zhou.studio/" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2>Calm</h2>
+										<h2 data-i18n="project-calm">Calm</h2>
 									</header>
 									<a class="image fit"><img src="images/calm.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-calm-desc">
 										A compassionate, evidence-based voice AI companion for managing stress, anxiety, fatigue, depression, self-esteem issues, and insomnia. Built with a Direct-to-Model WebSocket strategy that bypasses traditional back-end infrastructure to minimize latency. Features a reactive "Orb" interface using Tailwind CSS and Framer Motion for visual feedback during listening and speaking states.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://calm-ai-voice-companion.web.app" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://calm-ai-voice-companion.web.app" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2>Aichologist</h2>
+										<h2 data-i18n="project-aichologist">Aichologist</h2>
 									</header>
 									<a class="image fit"><img src="images/aichologist.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-aichologist-desc">
 										A full-stack AI psychologist chat application with over 80 paid subscriptions from Finnish users. Built with Python/FastAPI back-end and Flutter front-end, deployed on Hetzner Cloud with Docker across mobile and web platforms. Plans to integrate real-time voice via ElevenLabs STT/TTS API for natural voice-based interaction with the AI psychologist.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://www.aichologist.io/" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://www.aichologist.io/" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<h2>ABC_search</h2>
+										<h2 data-i18n="project-abc-search">ABC_search</h2>
 									</header>
 									<a class="image fit"><img src="images/abc_search.jpg" alt="" /></a>
-									<p>
+									<p data-i18n="project-abc-search-desc">
 										A medical search engine developed as coursework in Building NLP Applications. Supports Boolean search, TF-IDF search, and semantic search with sBERT, retrieving medical text data from MedicalNewsToday. Built using Agile methodologies with collaborative Git workflow.
 									</p>
 									<ul class="actions special">
-										<li><a href="https://github.com/Arbruiser/ABC_search" target="_blank" rel="noopener noreferrer" class="button">see details</a></li>
+										<li><a href="https://github.com/Arbruiser/ABC_search" target="_blank" rel="noopener noreferrer" data-i18n="see-details" class="button">see details</a></li>
 									</ul>
 								</article>
 							</section>
@@ -208,15 +213,15 @@
 						</section> -->
 						<section id="contacts" class="split contact">
 							<section class="alt">
-								<h3>Address</h3>
-								<p>Helsinki, Finland, 00100</p>
+								<h3 data-i18n="footer-address">Address</h3>
+								<p data-i18n="footer-address-value">Helsinki, Finland, 00100</p>
 							</section>
 							<!-- <section>
 								<h3>Phone</h3>
 								<p><a href="#">(000) 000-0000</a></p>
 							</section> -->
 							<section>
-								<h3>Email</h3>
+								<h3 data-i18n="footer-email">Email</h3>
 								<!-- <p><a href="mailto:echolian97@gmail.com">echolian97@gmail.com</a></p> -->
 								<!-- with subject -->
 								<p><a href="mailto:echolian97@gmail.com?subject=Inquiry from Website">echolian97@gmail.com</a></p>
@@ -224,7 +229,7 @@
 								<!-- <p><a href="mailto:echolian97@gmail.com?body=Hi there, I'm interested in...">echolian97@gmail.com</a></p> -->
 							</section>
 							<section>
-								<h3>Social</h3>
+								<h3 data-i18n="footer-social">Social</h3>
 								<ul class="icons">
 									<li><a href="https://x.com/baiyi_lian" target="_blank" rel="noopener noreferrer" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.linkedin.com/in/baiyi-lian-10244b28a" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
@@ -236,7 +241,7 @@
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+						<ul><li>&copy; <span data-i18n="footer-copyright">Untitled</span></li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
 
 			</div>
@@ -249,6 +254,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lang.js"></script>
 
 	</body>
 </html>
