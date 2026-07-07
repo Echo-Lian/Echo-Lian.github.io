@@ -7,21 +7,16 @@
 
   'use strict';
 
-  const translations = {
+  var translations = {
     en: {
-      // Nav
       'nav-home': 'HOME',
       'nav-projects': 'PROJECTS',
       'nav-contacts': 'CONTACTS',
-      // Intro
       'intro-explore': 'Explore',
-      // Header
       'header-logo': 'BAIYI LIAN',
-      // Featured
       'featured-heading': 'Hi — I\'m Baiyi',
       'featured-desc': 'I build reliable AI systems and love turning research ideas into practical tools. I work across full-stack ML: data, models, and deployment.',
       'featured-resume': 'Download Résumé',
-      // Projects
       'project-caresoul': 'CareSoul',
       'project-caresoul-desc': 'An AI-powered wellbeing assistant focused on natural dialogue which implements an agentic RAG workflow to retrieve clinically-grounded relationship tips while utilizing a \'Safety-First\' pre-processing layer to intercept high-risk queries, ensuring all interactions remain within health-tech compliance boundaries.',
       'project-easytts': 'easy tts reader',
@@ -39,16 +34,12 @@
       'project-abc-search': 'ABC_search',
       'project-abc-search-desc': 'A medical search engine developed as coursework in Building NLP Applications. Supports Boolean search, TF-IDF search, and semantic search with sBERT, retrieving medical text data from MedicalNewsToday. Built using Agile methodologies with collaborative Git workflow.',
       'see-details': 'see details',
-      // Footer
       'footer-address': 'Address',
       'footer-address-value': 'Helsinki, Finland, 00100',
       'footer-email': 'Email',
       'footer-social': 'Social',
       'footer-copyright': 'Untitled',
-      // Language selector
-      'lang-en': 'EN',
-      'lang-zh': '中文',
-      'lang-ja': '日本語',
+      'lang-label': 'EN'
     },
 
     zh: {
@@ -82,9 +73,7 @@
       'footer-email': '邮箱',
       'footer-social': '社交媒体',
       'footer-copyright': '无标题',
-      'lang-en': 'EN',
-      'lang-zh': '中文',
-      'lang-ja': '日本語',
+      'lang-label': '中文'
     },
 
     ja: {
@@ -118,9 +107,7 @@
       'footer-email': 'メール',
       'footer-social': 'ソーシャル',
       'footer-copyright': '無題',
-      'lang-en': 'EN',
-      'lang-zh': '中文',
-      'lang-ja': '日本語',
+      'lang-label': '日本語'
     }
   };
 
@@ -128,25 +115,34 @@
   // Language management
   // ============================================================
 
-  let currentLang = localStorage.getItem('site-lang') || 'en';
+  var currentLang = localStorage.getItem('site-lang') || 'en';
 
   function switchLang(lang) {
-    if (!translations[lang]) return;
+    if (!translations[lang]) {
+      console.warn('[lang.js] Unknown language:', lang);
+      return;
+    }
 
     currentLang = lang;
     localStorage.setItem('site-lang', lang);
 
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      const key = el.getAttribute('data-i18n');
-      const text = translations[lang][key];
+      var key = el.getAttribute('data-i18n');
+      var text = translations[lang][key];
       if (text !== undefined) {
         el.textContent = text;
       }
     });
 
-    // Update language selector active state
-    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    // Update toggle button text
+    var toggle = document.getElementById('lang-toggle');
+    if (toggle) {
+      toggle.textContent = translations[lang]['lang-label'] || lang.toUpperCase();
+    }
+
+    // Update dropdown active state
+    document.querySelectorAll('#lang-menu a').forEach(function(btn) {
       if (btn.getAttribute('data-lang') === lang) {
         btn.classList.add('active');
       } else {
@@ -157,8 +153,50 @@
     // Update page lang attribute
     document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'zh' ? 'zh-CN' : 'ja');
 
-    // Dispatch event for other scripts
-    document.dispatchEvent(new CustomEvent('langChanged', { detail: { lang: lang } }));
+    // Close the dropdown
+    document.getElementById('lang-selector').classList.remove('open');
+
+    console.log('[lang.js] Switched to:', lang);
+  }
+
+  // ============================================================
+  // Dropdown toggle
+  // ============================================================
+
+  function toggleDropdown(e) {
+    e.preventDefault();
+    var sel = document.getElementById('lang-selector');
+    sel.classList.toggle('open');
+  }
+
+  // Close dropdown when clicking outside
+  function closeOnOutsideClick(e) {
+    var sel = document.getElementById('lang-selector');
+    if (!sel.contains(e.target)) {
+      sel.classList.remove('open');
+    }
+  }
+
+  // ============================================================
+  // Scroll-based alt class (matching navPanelToggle behavior)
+  // ============================================================
+
+  function updateToggleStyle() {
+    var toggle = document.getElementById('lang-toggle');
+    var header = document.getElementById('header');
+    if (!toggle || !header) return;
+
+    var headerBottom = header.offsetTop + header.offsetHeight;
+    var scrollY = window.scrollY || window.pageYOffset;
+
+    // When scrolled past header bottom minus 5vh (~ the scrollex threshold)
+    var threshold = Math.max(headerBottom - window.innerHeight * 0.05, 0);
+
+    if (scrollY > threshold) {
+      toggle.classList.add('alt');
+    } else {
+      toggle.classList.remove('alt');
+    }
   }
 
   // ============================================================
@@ -166,29 +204,39 @@
   // ============================================================
 
   function downloadResumeZip() {
-    const files = [
+    var files = [
       { name: 'Baiyi_Lian_EN.pdf', path: 'Baiyi_Lian_EN.pdf' },
       { name: 'Baiyi_Lian_CN.pdf', path: 'Baiyi_Lian_CN.pdf' },
-      { name: 'Baiyi_Lian_JP.pdf', path: 'Baiyi_Lian_JP.pdf' },
+      { name: 'Baiyi_Lian_JP.pdf', path: 'Baiyi_Lian_JP.pdf' }
     ];
 
-    fetch('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js')
-      .then(function(r) { return r.text(); })
-      .then(function(code) {
-        eval(code);  // eslint-disable-line no-eval
-        return downloadWithJSZip(JSZip);
-      })
-      .catch(function() {
-        // Fallback: download individual files if JSZip fails
-        window.open(files[0].path, '_blank');
-      });
+    // Load JSZip dynamically via script tag to avoid eval/CSP issues
+    if (window.JSZip) {
+      doDownload(window.JSZip);
+      return;
+    }
 
-    function downloadWithJSZip(JSZip) {
+    var script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+    script.onload = function() {
+      doDownload(window.JSZip);
+    };
+    script.onerror = function() {
+      console.error('[lang.js] Failed to load JSZip');
+      window.open(files[0].path, '_blank');
+    };
+    document.head.appendChild(script);
+
+    function doDownload(JSZip) {
+      if (!JSZip) {
+        window.open(files[0].path, '_blank');
+        return;
+      }
       var zip = new JSZip();
-      var fetched = [];
+      var fetches = [];
 
       files.forEach(function(f) {
-        fetched.push(
+        fetches.push(
           fetch(f.path)
             .then(function(r) {
               if (!r.ok) throw new Error('Failed to fetch ' + f.path);
@@ -200,8 +248,11 @@
         );
       });
 
-      Promise.all(fetched).then(function() {
-        zip.generateAsync({ type: 'blob' }).then(function(blob) {
+      Promise.all(fetches)
+        .then(function() {
+          return zip.generateAsync({ type: 'blob' });
+        })
+        .then(function(blob) {
           var link = document.createElement('a');
           link.href = URL.createObjectURL(blob);
           link.download = 'Baiyi_Lian_CV.zip';
@@ -209,11 +260,11 @@
           link.click();
           document.body.removeChild(link);
           setTimeout(function() { URL.revokeObjectURL(link.href); }, 5000);
+        })
+        .catch(function(err) {
+          console.error('[lang.js] ZIP download failed:', err);
+          window.open(files[0].path, '_blank');
         });
-      }).catch(function(err) {
-        console.error('Download failed:', err);
-        window.open(files[0].path, '_blank');
-      });
     }
   }
 
@@ -222,19 +273,45 @@
   // ============================================================
 
   $(function() {
+
     // Set initial language
     switchLang(currentLang);
 
-    // Bind language selector clicks
-    $(document).on('click', '.lang-btn', function(e) {
+    // Dropdown toggle click
+    $('#lang-toggle').on('click', function(e) {
+      e.preventDefault();
+      toggleDropdown(e);
+    });
+
+    // Language option click in dropdown
+    $('#lang-menu').on('click', 'a', function(e) {
       e.preventDefault();
       var lang = $(this).data('lang');
       if (lang && lang !== currentLang) {
         switchLang(lang);
+      } else {
+        // Close dropdown even if same language clicked
+        document.getElementById('lang-selector').classList.remove('open');
       }
     });
 
-    // Bind download resume button
+    // Close dropdown on outside click
+    $(document).on('click', function(e) {
+      var $sel = $('#lang-selector');
+      if ($sel.hasClass('open') && !$(e.target).closest('#lang-selector').length) {
+        $sel.removeClass('open');
+      }
+    });
+
+    // Scroll handler for alt class
+    $(window).on('scroll resize', function() {
+      updateToggleStyle();
+    });
+
+    // Initial check
+    updateToggleStyle();
+
+    // Download resume button
     $(document).on('click', '#download-resume', function(e) {
       e.preventDefault();
       downloadResumeZip();
