@@ -47,8 +47,8 @@
       'nav-projects': '项目',
       'nav-contacts': '联系',
       'intro-explore': '探索',
-      'header-logo': '连白一',
-      'featured-heading': '你好，我是白一',
+      'header-logo': '练柏仪',
+      'featured-heading': '你好，我是柏仪',
       'featured-desc': '我构建可靠的AI系统，热衷于将研究想法转化为实用工具。我覆盖全栈机器学习：数据、模型与部署。',
       'featured-resume': '下载简历',
       'project-caresoul': 'CareSoul',
@@ -81,8 +81,8 @@
       'nav-projects': 'プロジェクト',
       'nav-contacts': 'お問い合わせ',
       'intro-explore': '探索',
-      'header-logo': 'Baiyi Lian',
-      'featured-heading': 'こんにちは、白一です',
+      'header-logo': '練　柏儀',
+      'featured-heading': 'こんにちは、柏儀です',
       'featured-desc': '信頼性の高いAIシステムを構築し、研究アイデアを実用的なツールに変えることを愛しています。データ、モデル、デプロイメントにわたるフルスタックMLに取り組んでいます。',
       'featured-resume': '履歴書をダウンロード',
       'project-caresoul': 'CareSoul',
@@ -177,27 +177,7 @@
     }
   }
 
-  // ============================================================
-  // Scroll-based alt class (matching navPanelToggle behavior)
-  // ============================================================
 
-  function updateToggleStyle() {
-    var toggle = document.getElementById('lang-toggle');
-    var header = document.getElementById('header');
-    if (!toggle || !header) return;
-
-    var headerBottom = header.offsetTop + header.offsetHeight;
-    var scrollY = window.scrollY || window.pageYOffset;
-
-    // When scrolled past header bottom minus 5vh (~ the scrollex threshold)
-    var threshold = Math.max(headerBottom - window.innerHeight * 0.05, 0);
-
-    if (scrollY > threshold) {
-      toggle.classList.add('alt');
-    } else {
-      toggle.classList.remove('alt');
-    }
-  }
 
   // ============================================================
   // ZIP download
@@ -302,14 +282,6 @@
         $sel.removeClass('open');
       }
     });
-
-    // Scroll handler for alt class
-    $(window).on('scroll resize', function() {
-      updateToggleStyle();
-    });
-
-    // Initial check
-    updateToggleStyle();
 
     // Download resume button
     $(document).on('click', '#download-resume', function(e) {
